@@ -1,5 +1,9 @@
 #include "PRIV_LIB.h"
 
+/**
+ * @brief 
+ * 
+ */
 void SDB_APP()
 {
     printf("\n------------------------------");
@@ -35,23 +39,81 @@ void SDB_APP()
     }
 }
 
+/**
+ * @brief 
+ * 
+ * @param choice 
+ */
 void SDB_action(uint8 choice)
 {
+    char str[20];
     switch(choice)
     {
         case 1:
+            if(SDB_AddEntry())
+                printf("\nEntry Has Been Added Successfully");
+            else
+                printf("Entry Hasn't Been Added");    
             break;
         case 2:
+            printf("\nNumber of Entries: %d",SDB_GetUsedSize());
             break;
         case 3:
+            printf("\nEnter Student's ID\n--> ");
+            fetch_str(str,sizeof(str));
+            if(!isUInt(str))
+            {
+                errorI01();
+                printf("\nreturning...");
+            }
+            else if(!SDB_ReadEntry((uint32)atoi(str)))
+            {
+                errorD02();
+                printf("\nreturning...");
+            }
             break;
         case 4:
+            uint32 list[MAX_SIZE]={0};
+            int count;
+            SDB_GetList(&count,list);
+            if(count==0)
+                errorD04();
+            else
+            {
+                printf("\n----------------------------");
+                for(int i;i<count;i++)
+                    printf("\nID No. (%d):%d",i+1,list[i]);
+                printf("\n----------------------------");
+            }
             break;
         case 5:
+            printf("\nEnter Student's ID\n--> ");
+            fetch_str(str,sizeof(str));
+            if(!isUInt(str))
+            {
+                errorI01();
+                printf("\nreturning...");
+            }
+            else
+            {
+                printf("\nID %s",SDB_IsIdExist((uint32)atoi(str))?"Exists":"Doesn't Exist");
+            }
             break;
         case 6:
+            printf("\nEnter Student's ID\n--> ");
+            fetch_str(str,sizeof(str));
+            if(!isUInt(str))
+            {
+                errorI01();
+                printf("\nreturning...");
+            }
+            else
+            {
+                SDB_DeleteEntry((uint32)atoi(str));
+            }
             break;
         case 7:
+            printf("Database is %sFull",SDB_IsFull()?"":"Not ");
             break;
         default:
             return;

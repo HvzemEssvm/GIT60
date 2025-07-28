@@ -11,6 +11,11 @@ student* DB[10]={NULL};
 const char Tompstone_Char;
 const void* Tompstone = (void*)&Tompstone_Char;
 
+/**
+ * @brief 
+ * 
+ * @return student* 
+ */
 student* INIT_STUDENT()
 {
     student* s = (student*)malloc(sizeof(student));
@@ -23,6 +28,10 @@ student* INIT_STUDENT()
     return s;
 }
 
+/**
+ * @brief 
+ * 
+ */
 void DEL_DB()
 {
     for(int i=0;i<HT_SIZE;i++)
@@ -35,6 +44,13 @@ void DEL_DB()
     }
 }
 
+/**
+ * @brief 
+ * 
+ * @param str 
+ * @return true 
+ * @return false 
+ */
 bool isUInt(char* str)
 {
     if(str)
@@ -47,6 +63,12 @@ bool isUInt(char* str)
     return false;
 }
 
+/**
+ * @brief 
+ * 
+ * @param str 
+ * @param byte_size 
+ */
 void fetch_str(char* str,const int byte_size)
 {
     if(str)
@@ -57,11 +79,23 @@ void fetch_str(char* str,const int byte_size)
     }
 }
 
+/**
+ * @brief 
+ * 
+ * @param x 
+ * @param i 
+ * @return uint8 
+ */
 uint8 HASH_FN_LINEAR_PROP(uint32 x,int i)
 {
     return ((x%HT_SIZE)+i)%HT_SIZE;
 }
 
+/**
+ * @brief 
+ * 
+ * @param s 
+ */
 void INS_CLOSE_HASH(student* s)
 {
     int i = 0;
@@ -73,6 +107,12 @@ void INS_CLOSE_HASH(student* s)
     ELEMENTS_NUM++;
 }
 
+/**
+ * @brief 
+ * 
+ * @param id 
+ * @return uint8 
+ */
 uint8 Fetch_INDEX_BY_ID(uint32 id)
 {
     int i=0;
@@ -93,6 +133,14 @@ uint8 Fetch_INDEX_BY_ID(uint32 id)
     return -1;
 }
 
+/**
+ * @brief 
+ * 
+ * @param input_name 
+ * @param input_val 
+ * @return true 
+ * @return false 
+ */
 bool Fetch_Validate_Uint(char* input_name,int* input_val)
 {
     char temp[20];
@@ -121,6 +169,8 @@ bool Fetch_Validate_Uint(char* input_name,int* input_val)
     *input_val = atoi(temp);
     return true;
 }
+
+// ------------------------------> Required Methods <------------------------------
 
 /**
  * @brief it compares the number of elements in the DB which is updated real-time to the fixed maximum capacity.
@@ -211,10 +261,7 @@ bool SDB_ReadEntry(uint32 id)
 {
     uint8 temp=Fetch_INDEX_BY_ID(id);
     if(temp==-1)
-    {
-        errorD02();
         return false;
-    }
     printf("\n---------------------------------------------------");
     printf("\n - Student ID : %d"
            "\n - Student Year: %d"
