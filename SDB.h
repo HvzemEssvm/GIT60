@@ -16,10 +16,13 @@ typedef struct SimpleDB
     
 }student;
 
-/**
- * @note about "Create SDB.h to have the function declaration that’s you use in the project"
- * I only added the function to be shared between main.c and and SDB.c file here, To apply
- * the "Encapsulation Principle".
- */
+extern uint8 SDB_GetUsedSize();
+extern bool SDB_IsFull();
+extern bool SDB_IsIdExist(uint32 id);
+extern bool SDB_AddEntry();
+extern bool SDB_ReadEntry(uint32 id);
+extern void SDB_DeleteEntry(uint32 id);
+extern void SDB_GetList(uint8* count, uint32* list);
 extern void SDB_APP();
+
 #endif

@@ -1,9 +1,7 @@
-#include <stdio.h>
-#include "STD.h"
+#include "SDB.h"
+
 int main()
 {
-    bool test = false;
-    uint8 sd=;
-    printf("%d, sd",test);
+    SDB_APP();
     return 0;
 }
