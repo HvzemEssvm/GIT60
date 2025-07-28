@@ -1,9 +1,7 @@
-#include "SDB.h"
+#include "PRIV_LIB.h"
 #include <math.h>
-
-#define MAX_SIZE 10
-#define MIN_SIZE 3
-#define HT_SIZE 11
+#include <ctype.h>
+#include <string.h>
 
 #if HT_SIZE >= MAX_SIZE
 
@@ -11,7 +9,7 @@ uint8 ELEMENTS_NUM=0;
 student* DB[10]={NULL};
 
 const char Tompstone_Char;
-const void* const Tompstone = (void*)&Tompstone_Char;
+const void* Tompstone = (void*)&Tompstone_Char;
 
 student* INIT_STUDENT()
 {
@@ -25,21 +23,103 @@ student* INIT_STUDENT()
     return s;
 }
 
-uint8 HASH_FN_QUAD_PROP(uint8 x,int i)
+void DEL_DB()
 {
-    return ((x%MAX_SIZE)+(int)pow(i,2))%MAX_SIZE;
+    for(int i=0;i<HT_SIZE;i++)
+    {
+        if(DB[i]!=NULL&&DB[i]!=Tompstone)
+        {    
+            free(DB[i]);
+            DB[i]=NULL;
+        }
+    }
+}
+
+bool isUInt(char* str)
+{
+    if(str)
+    {
+        for(int i=0;str[i]!='\0';i++)
+            if(!isdigit(str[i])&&str[i]!=' ')
+                return false;
+        return true;
+    }
+    return false;
+}
+
+void fetch_str(char* str,const int byte_size)
+{
+    if(str)
+    {
+        fgets(str,byte_size,stdin);
+        if(str[strlen(str)-1]=='\n')
+            str[strlen(str)-1]='\0';
+    }
+}
+
+uint8 HASH_FN_LINEAR_PROP(uint32 x,int i)
+{
+    return ((x%HT_SIZE)+i)%HT_SIZE;
 }
 
 void INS_CLOSE_HASH(student* s)
 {
-    int temp = s->Student_ID;
     int i = 0;
-    uint8 temp = HASH_FN_QUAD_PROP(s->Student_ID,i);
+    uint8 temp = HASH_FN_LINEAR_PROP(s->Student_ID,i);
     while(DB[temp]!=NULL&&DB[temp]!=Tompstone)
-        temp = HASH_FN_QUAD_PROP(s->Student_ID,++i);
+        temp = HASH_FN_LINEAR_PROP(s->Student_ID,++i);
 
     DB[temp]=s;
     ELEMENTS_NUM++;
+}
+
+uint8 Fetch_INDEX_BY_ID(uint32 id)
+{
+    int i=0;
+    uint8 temp,initial_index = HASH_FN_LINEAR_PROP(id,i);
+    while(DB[temp]!=NULL&&i<HT_SIZE)
+    {
+        if(DB[temp]==Tompstone)
+        {   
+            temp = HASH_FN_LINEAR_PROP(id,++i);
+            continue;
+        }
+
+        if(DB[temp]->Student_ID==id)
+            return temp;
+
+        temp = HASH_FN_LINEAR_PROP(id,++i);
+    }
+    return -1;
+}
+
+bool Fetch_Validate_Uint(char* input_name,int* input_val)
+{
+    char temp[20];
+    while(true)
+    {
+        printf("\nEnter (r) to return to previous menu without saving"
+               "\nOr Enter %s\n-->",input_name);
+        fetch_str(temp,20);
+        if(strcasecmp(temp,"r")==0)
+            return false;
+        if(!isUInt(temp))
+        {
+            errorI01();
+            continue;
+        }
+    }
+    if(strstr(input_name,"year")!=NULL||strstr(input_name,"Year")!=NULL)
+    {
+        int temp_int = atoi(temp);
+        if(temp_int<1900||temp_int>3000)
+        {
+            errorI02();
+            return Fetch_Validate_Uint(input_name,input_val);
+        }
+    }
+    *input_val = atoi(temp);
+    return true;
 }
 
 /**
@@ -62,29 +142,122 @@ uint8 SDB_GetUsedSize()
     return ELEMENTS_NUM;
 }
 
+/**
+ * @brief 
+ * 
+ * @return true 
+ * @return false 
+ */
 bool SDB_AddEntry()
 {
-;
+    if(SDB_IsFull)
+    {   
+        errorD01();
+        return false;
+    }
+
+    student* s = INIT_STUDENT();
+    if(!s)
+    {
+        errorM01();
+        return false;
+    }
+
+    if (!Fetch_Validate_Uint("Student ID",&s->Student_ID)           ||
+       !Fetch_Validate_Uint("Student Year",&s->Student_year)        ||
+       !Fetch_Validate_Uint("1st Course ID",&s->Course1_ID)         ||
+       !Fetch_Validate_Uint("1st Course Grade",&s->Course1_grade)   ||
+       !Fetch_Validate_Uint("2nd Course ID",&s->Course2_ID)         ||
+       !Fetch_Validate_Uint("2nd Course Grade",&s->Course2_grade)   ||
+       !Fetch_Validate_Uint("3rd Course ID",&s->Course3_ID)         ||
+       !Fetch_Validate_Uint("3rd Course Grade",&s->Course3_grade))
+    {   free(s);    return false; }
+    
+    INS_CLOSE_HASH(s);
+    return true;
 }
 
+/**
+ * @brief 
+ * 
+ * @param id 
+ */
 void SDB_DeleteEntry(uint32 id)
 {
-;
+    if(ELEMENTS_NUM<=MIN_SIZE+1)
+    {
+        errorD03();
+        return;
+    }
+
+    uint8 temp=Fetch_INDEX_BY_ID(id);
+    if(temp==-1)
+    {
+        errorD02();
+        return;
+    }
+    free(DB[temp]);
+    DB[temp]=Tompstone;
 }
 
+/**
+ * @brief 
+ * 
+ * @param id 
+ * @return true 
+ * @return false 
+ */
 bool SDB_ReadEntry(uint32 id)
 {
-;
+    uint8 temp=Fetch_INDEX_BY_ID(id);
+    if(temp==-1)
+    {
+        errorD02();
+        return false;
+    }
+    printf("\n---------------------------------------------------");
+    printf("\n - Student ID : %d"
+           "\n - Student Year: %d"
+           "\n - 1st Course ID: %d"
+           "\n - 1st Course Grade: %d"
+           "\n - 2nd Course ID: %d"
+           "\n - 2nd Course Grade: %d"
+           "\n - 3rd Course ID: %d"
+           "\n - 3rd Course Grade: %d",
+           DB[temp]->Student_ID,DB[temp]->Student_year,DB[temp]->Course1_ID,
+           DB[temp]->Course1_grade,DB[temp]->Course2_ID,DB[temp]->Course2_grade,
+           DB[temp]->Course3_ID,DB[temp]->Course3_grade);
+    printf("\n---------------------------------------------------");
+    return true;   
 }
 
+/**
+ * @brief 
+ * 
+ * @param count 
+ * @param list 
+ */
 void SDB_GetList(uint8* count, uint32* list)
 {
-;
+    int i=0;
+    for(i=0,*count=0;i<HT_SIZE;i++)
+    {
+        student* temp = DB[i];
+        if(temp!=NULL&&temp!=Tompstone)
+            list[(*count)++]=temp->Student_ID;
+    }
 }
 
+/**
+ * @brief 
+ * 
+ * @param id 
+ * @return true 
+ * @return false 
+ */
 bool SDB_IsIdExist(uint32 id)
 {
-;
+    return Fetch_INDEX_BY_ID(id)!=-1;
 }
 
 #endif
