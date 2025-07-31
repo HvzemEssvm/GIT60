@@ -100,7 +100,7 @@ void INS_CLOSE_HASH(student* s)
 {
     int i = 0;
     uint8 temp = HASH_FN_LINEAR_PROP(s->Student_ID,i);
-    while(DB[temp]!=NULL&&DB[temp]!=Tompstone)
+    while(i<HT_SIZE&&DB[temp]!=NULL&&DB[temp]!=Tompstone)
         temp = HASH_FN_LINEAR_PROP(s->Student_ID,++i);
 
     DB[temp]=s;
@@ -113,21 +113,15 @@ void INS_CLOSE_HASH(student* s)
  * @param id 
  * @return uint8 
  */
-uint8 Fetch_INDEX_BY_ID(uint32 id)
+int Fetch_INDEX_BY_ID(uint32 id)
 {
     int i=0;
-    uint8 temp,initial_index = HASH_FN_LINEAR_PROP(id,i);
+    uint8 temp = HASH_FN_LINEAR_PROP(id,i);
     while(DB[temp]!=NULL&&i<HT_SIZE)
     {
-        if(DB[temp]==Tompstone)
-        {   
-            temp = HASH_FN_LINEAR_PROP(id,++i);
-            continue;
-        }
-
-        if(DB[temp]->Student_ID==id)
-            return temp;
-
+        if(DB[temp]!=Tompstone)
+            if(DB[temp]->Student_ID==id)
+                return temp;
         temp = HASH_FN_LINEAR_PROP(id,++i);
     }
     return -1;
@@ -141,13 +135,13 @@ uint8 Fetch_INDEX_BY_ID(uint32 id)
  * @return true 
  * @return false 
  */
-bool Fetch_Validate_Uint(char* input_name,int* input_val)
+bool Fetch_Validate_Uint(char* input_name,uint32* input_val)
 {
     char temp[20];
     while(true)
     {
         printf("\nEnter (r) to return to previous menu without saving"
-               "\nOr Enter %s\n-->",input_name);
+               "\nOr Enter %s\n--> ",input_name);
         fetch_str(temp,20);
         if(strcasecmp(temp,"r")==0)
             return false;
@@ -156,6 +150,7 @@ bool Fetch_Validate_Uint(char* input_name,int* input_val)
             errorI01();
             continue;
         }
+        break;
     }
     if(strstr(input_name,"year")!=NULL||strstr(input_name,"Year")!=NULL)
     {
@@ -200,7 +195,7 @@ uint8 SDB_GetUsedSize()
  */
 bool SDB_AddEntry()
 {
-    if(SDB_IsFull)
+    if(SDB_IsFull())
     {   
         errorD01();
         return false;
@@ -234,20 +229,33 @@ bool SDB_AddEntry()
  */
 void SDB_DeleteEntry(uint32 id)
 {
-    if(ELEMENTS_NUM<=MIN_SIZE+1)
+    if(ELEMENTS_NUM<MIN_SIZE+1)
     {
         errorD03();
+        printf("\n%d is NOT deleted..\n",id);
         return;
     }
 
-    uint8 temp=Fetch_INDEX_BY_ID(id);
+    int temp=Fetch_INDEX_BY_ID(id);
     if(temp==-1)
     {
         errorD02();
         return;
     }
+    char confirm[10];
+    while(true)
+    {
+        printf("\nAre you sure you want to delete student with id (%d)? (Y/N)\n--> ",id);
+        fetch_str(confirm,sizeof(confirm));
+        if(strcasecmp(confirm,"y")==0||strcasecmp(confirm,"n")==0)
+            break;
+        errorI01();
+    }
+    if(strcasecmp(confirm,"n")==0)
+    {printf("\n%d is NOT deleted..\n",id);    return;}
     free(DB[temp]);
     DB[temp]=Tompstone;
+    printf("\n%d is deleted successfully..\n",id);
 }
 
 /**
@@ -259,7 +267,7 @@ void SDB_DeleteEntry(uint32 id)
  */
 bool SDB_ReadEntry(uint32 id)
 {
-    uint8 temp=Fetch_INDEX_BY_ID(id);
+    int temp=Fetch_INDEX_BY_ID(id);
     if(temp==-1)
         return false;
     printf("\n---------------------------------------------------");
