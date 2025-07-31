@@ -55,9 +55,13 @@ bool isUInt(char* str)
 {
     if(str)
     {
+        if(strcasecmp(str,"")==0)
+            return false;
+
         for(int i=0;str[i]!='\0';i++)
             if(!isdigit(str[i])&&str[i]!=' ')
                 return false;
+                
         return true;
     }
     return false;
@@ -76,6 +80,11 @@ void fetch_str(char* str,const int byte_size)
         fgets(str,byte_size,stdin);
         if(str[strlen(str)-1]=='\n')
             str[strlen(str)-1]='\0';
+        else
+        {
+            int temp_char;
+            while ((temp_char = getchar()) != '\n' && temp_char != EOF);
+        }
     }
 }
 
@@ -152,6 +161,7 @@ bool Fetch_Validate_Uint(char* input_name,uint32* input_val)
         }
         break;
     }
+
     if(strstr(input_name,"year")!=NULL||strstr(input_name,"Year")!=NULL)
     {
         int temp_int = atoi(temp);
@@ -207,9 +217,21 @@ bool SDB_AddEntry()
         errorM01();
         return false;
     }
+    int temp_id;
 
-    if (!Fetch_Validate_Uint("Student ID",&s->Student_ID)           ||
-       !Fetch_Validate_Uint("Student Year",&s->Student_year)        ||
+    if (!Fetch_Validate_Uint("Student ID",&temp_id))
+    {    free(s);    return false;  }
+    
+    if(SDB_IsIdExist(temp_id))
+    {
+        errorD05();
+        free(s);   
+        return false;  
+    }
+    
+    s->Student_ID = temp_id;
+
+    if(!Fetch_Validate_Uint("Student Year",&s->Student_year)        ||
        !Fetch_Validate_Uint("1st Course ID",&s->Course1_ID)         ||
        !Fetch_Validate_Uint("1st Course Grade",&s->Course1_grade)   ||
        !Fetch_Validate_Uint("2nd Course ID",&s->Course2_ID)         ||

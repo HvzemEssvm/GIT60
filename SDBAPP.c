@@ -8,7 +8,6 @@
  */
 void SDB_action(uint8 choice)
 {
-    char str[20];
     uint32 temp;
     switch(choice)
     {
@@ -16,24 +15,25 @@ void SDB_action(uint8 choice)
             if(SDB_AddEntry())
                 printf("\nEntry Has Been Added Successfully");
             else
-                printf("Entry Hasn't Been Added");    
+                printf("\nEntry Hasn't Been Added\n");    
             break;
+
         case 2:
             printf("\nNumber of Entries: %d\n",SDB_GetUsedSize());
             break;
+
         case 3:
-            printf("\nEnter Student's ID\n--> ");
-            fetch_str(str,sizeof(str));
-            if(!isUInt(str))
+            if(Fetch_Validate_Uint("Student's ID",&temp))
             {
-                errorI01();
-                printf("\nreturning...");
+                if(!SDB_ReadEntry(temp))
+                {
+                    errorD02();
+                    printf("\nreturning...\n");
+                }
             }
-            else if(!SDB_ReadEntry((uint32)atoi(str)))
-            {
-                errorD02();
-                printf("\nreturning...");
-            }
+            else
+                printf("\nreturning..\n.");
+
             break;
         case 4:
             uint32 list[MAX_SIZE]={0};
@@ -52,21 +52,22 @@ void SDB_action(uint8 choice)
 
         case 5:
             if(Fetch_Validate_Uint("Student's ID",&temp))
-                printf("\nID %s\n",SDB_IsIdExist((uint32)atoi(str))?"Exists":"Doesn't Exist");
+                printf("\nID %s\n",SDB_IsIdExist(temp)?"Exists":"Doesn't Exist");
             else
-                printf("\nreturning...");
+                printf("\nreturning...\n");
             break;
 
         case 6:
             if(Fetch_Validate_Uint("Student's ID",&temp))
                 SDB_DeleteEntry(temp);
             else
-                printf("\nreturning...");
+                printf("\nreturning...\n");
             break;
-            
+
         case 7:
             printf("\nDatabase is %sFull\n",SDB_IsFull()?"":"Not ");
             break;
+
         default:
             return;
     }
@@ -89,7 +90,7 @@ void SDB_APP()
                "\nEnter (2) To get used size in database"
                "\nEnter (3) To read student data"  
                "\nEnter (4) To get the list of all student IDs" 
-               "\nEnter (5) To check is ID is existed"
+               "\nEnter (5) To check if ID exists"
                "\nEnter (6) To delete student data"
                "\nEnter (7) To check is database is full" 
                "\nEnter (0) To exit");
@@ -105,6 +106,9 @@ void SDB_APP()
             SDB_action(temp);
         else
         {    
+            printf("\n------------------------------");
+            printf("\n   Thanks for using our API   ");
+            printf("\n------------------------------");
             DEL_DB();
             return;
         }

@@ -10,6 +10,7 @@
 #define errorD02()  printf("\n!! Entry Not Found !!\n")
 #define errorD03()  printf("\n!! Database is at Min (%d Entries) !!\n",ELEMENTS_NUM)
 #define errorD04()  printf("\n!! Empty Database !!\n")
+#define errorD05()  printf("\n!! An Entry Already Exists With The Same Info !!\n")
 
 extern uint8 SDB_GetUsedSize();
 extern bool SDB_IsFull();
