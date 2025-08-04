@@ -19,6 +19,6 @@ typedef struct SimpleDB
     
 }student;
 
-extern void SDB_APP();
+void SDB_APP();
 
 #endif

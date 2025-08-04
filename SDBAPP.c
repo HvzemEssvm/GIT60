@@ -1,10 +1,27 @@
 #include "PRIV_LIB.h"
 
-
 /**
- * @brief 
+ * @brief it calls the corresponding function depending on the input from user:
  * 
- * @param choice 
+ * Cases are divided into two sets:
+ * 
+ * (I) I/O Set:
+ * This set needs input buffer (temp) to store the id from the user --> validate the id by the @fn Fetch_Validate_Uint(char*,uint32*):
+ *
+ * @if correct input not equal (r) it will proceed to the corresponding function with that input as an argument
+ *
+ * @elseif correct input equal (r) it will return to the main menu 
+ * 
+ * @else Displayes error and returns to the main menu
+ *
+ * @example { Case_1(implicitly), Case_3, Case_5, Case_6 }
+ * 
+ * (II) Output Only Set:
+ * This set doesn't require any further input from the user and displays the output rightaway once choosen
+ * 
+ * @example { Case_2, Case_4, Case_7}
+ * 
+ * @param choice unsigned char range = [1,7]
  */
 void SDB_action(uint8 choice)
 {
@@ -74,7 +91,13 @@ void SDB_action(uint8 choice)
 }
 
 /**
- * @brief 
+ * @brief SDB_APP is to be called inside the main() loop to display all the options
+ * from the list depending on the requirements --> Fetch input from user representing 
+ * his choice as a number --> validate the number is Uint & Within Range:
+ * 
+ * @if choice is equal to 0: Exit and Display Exiting Message
+ * 
+ * @else Pass the choice to **SDB_action()**
  * 
  */
 void SDB_APP()

@@ -3,18 +3,21 @@
 #include <ctype.h>
 #include <string.h>
 
-#if HT_SIZE >= MAX_SIZE
+#if HT_SIZE >= MAX_SIZE 
 
-uint8 ELEMENTS_NUM=0;
-student* DB[10]={NULL};
+// tracks number of elements (incremented during successful insertion) and decremented durin successful deletions
+uint8 ELEMENTS_NUM = 0;
+
+//initial DB (HASH Table Based)
+student* DB[MAX_SIZE] = {NULL};
 
 const char Tompstone_Char;
 const void* Tompstone = (void*)&Tompstone_Char;
 
 /**
- * @brief 
- * 
- * @return student* 
+ * @brief Allocates memory for a new student structure and initializes its members to zero.
+
+ * @return student* A pointer to the newly allocated and initialized student structure, or NULL if memory allocation fails.
  */
 student* INIT_STUDENT()
 {
@@ -29,9 +32,8 @@ student* INIT_STUDENT()
 }
 
 /**
- * @brief 
- * 
- */
+ * @brief Deallocates memory for all student entries in the database and sets their pointers to NULL.
+ * */
 void DEL_DB()
 {
     for(int i=0;i<HT_SIZE;i++)
@@ -45,11 +47,12 @@ void DEL_DB()
 }
 
 /**
- * @brief 
+ * @brief Checks if a given string contains only unsigned integer characters (digits and spaces).
  * 
- * @param str 
- * @return true 
- * @return false 
+ * @param str The string to be checked.
+ * 
+ * @return true If the string contains only digits and spaces, and is not empty.
+ * @return false Otherwise.
  */
 bool isUInt(char* str)
 {
@@ -68,10 +71,10 @@ bool isUInt(char* str)
 }
 
 /**
- * @brief 
+ * @brief Reads a string from standard input, handling newline characters.
  * 
- * @param str 
- * @param byte_size 
+ * @param str The character array to store the fetched string.
+ * @param byte_size The maximum number of bytes to read, including the null terminator.
  */
 void fetch_str(char* str,const int byte_size)
 {
@@ -89,11 +92,12 @@ void fetch_str(char* str,const int byte_size)
 }
 
 /**
- * @brief 
+ * @brief Implements a linear probing hash function for a hash table.
  * 
- * @param x 
- * @param i 
- * @return uint8 
+ * @param x The input key (student ID).
+ * @param i The probe number (0 for the first attempt, 1 for the second, and so on).
+ * 
+ * @return uint8 The calculated hash index for the given key and probe number.
  */
 uint8 HASH_FN_LINEAR_PROP(uint32 x,int i)
 {
@@ -101,9 +105,9 @@ uint8 HASH_FN_LINEAR_PROP(uint32 x,int i)
 }
 
 /**
- * @brief 
+ * @brief Inserts a student entry into the hash table using linear probing for collision resolution.
  * 
- * @param s 
+ * @param s A pointer to the student structure to be inserted.
  */
 void INS_CLOSE_HASH(student* s)
 {
@@ -117,10 +121,11 @@ void INS_CLOSE_HASH(student* s)
 }
 
 /**
- * @brief 
+ * @brief Fetches the index of a student entry in the hash table by their ID.
  * 
- * @param id 
- * @return uint8 
+ * @param id The student ID to search for.
+ * 
+ * @return int The index of the student entry in the hash table if found, otherwise -1.
  */
 int Fetch_INDEX_BY_ID(uint32 id)
 {
@@ -137,12 +142,13 @@ int Fetch_INDEX_BY_ID(uint32 id)
 }
 
 /**
- * @brief 
+ * @brief Prompts the user for a unsigned integer input, validates it, and stores it.
  * 
- * @param input_name 
- * @param input_val 
- * @return true 
- * @return false 
+ * @param input_name A string representing the name of the input field (e.g., "Student ID", "Student Year").
+ * @param input_val A pointer to the uint32 variable where the validated input will be stored.
+ * 
+ * @return true If a valid unsigned integer is entered and saved.
+ * @return false If the user chooses to return to the previous menu or an invalid input is repeatedly entered.
  */
 bool Fetch_Validate_Uint(char* input_name,uint32* input_val)
 {
@@ -178,11 +184,12 @@ bool Fetch_Validate_Uint(char* input_name,uint32* input_val)
 // ------------------------------> Required Methods <------------------------------
 
 /**
- * @brief it compares the number of elements in the DB which is updated real-time to the fixed maximum capacity.
- * @attention this function must be used before any insertion process
+ * @brief Compares the number of elements currently in the database to its maximum capacity.
  * 
- * @return true in case of reaching the 
- * @return false 
+ * @attention This function must be used before any insertion process.
+ * 
+ * @return true If the database is full (number of elements equals maximum capacity).
+ * @return false If the database has available space.
  */
 bool SDB_IsFull()
 {
@@ -190,7 +197,9 @@ bool SDB_IsFull()
 }
 
 /**
- * @return uint8 as the current population in the DB
+ * @brief Returns the current number of student entries stored in the database.
+ * 
+ * @return uint8 The current population (number of used entries) in the database.
  */
 uint8 SDB_GetUsedSize()
 {
@@ -198,10 +207,10 @@ uint8 SDB_GetUsedSize()
 }
 
 /**
- * @brief 
+ * @brief Adds a new student entry to the database, prompting the user for all necessary details.
  * 
- * @return true 
- * @return false 
+ * @return true If the student entry is successfully added.
+ * @return false If the database is full, memory allocation fails, or the user cancels the input process.
  */
 bool SDB_AddEntry()
 {
@@ -245,9 +254,9 @@ bool SDB_AddEntry()
 }
 
 /**
- * @brief 
+ * @brief Deletes a student entry from the database based on their ID.
  * 
- * @param id 
+ * @param id The ID of the student to be deleted.
  */
 void SDB_DeleteEntry(uint32 id)
 {
@@ -277,15 +286,17 @@ void SDB_DeleteEntry(uint32 id)
     {printf("\n%d is NOT deleted..\n",id);    return;}
     free(DB[temp]);
     DB[temp]=Tompstone;
+    ELEMENTS_NUM--;
     printf("\n%d is deleted successfully..\n",id);
 }
 
 /**
- * @brief 
+ * @brief Reads and displays the details of a student entry based on their ID.
  * 
- * @param id 
- * @return true 
- * @return false 
+ * @param id The ID of the student whose details are to be displayed.
+ * 
+ * @return true If the student entry is found and its details are displayed.
+ * @return false If the student entry with the given ID is not found.
  */
 bool SDB_ReadEntry(uint32 id)
 {
@@ -309,10 +320,10 @@ bool SDB_ReadEntry(uint32 id)
 }
 
 /**
- * @brief 
+ * @brief Retrieves a list of all student IDs currently in the database.
  * 
- * @param count 
- * @param list 
+ * @param count A pointer to a uint8 variable that will store the number of student IDs retrieved.
+ * @param list A pointer to a uint32 array where the student IDs will be stored.
  */
 void SDB_GetList(uint8* count, uint32* list)
 {
@@ -326,11 +337,12 @@ void SDB_GetList(uint8* count, uint32* list)
 }
 
 /**
- * @brief 
+ * @brief Checks if a student with the given ID exists in the database.
  * 
- * @param id 
- * @return true 
- * @return false 
+ * @param id The student ID to check for existence.
+ * 
+ * @return true If a student with the given ID exists in the database.
+ * @return false If no student with the given ID is found.
  */
 bool SDB_IsIdExist(uint32 id)
 {
