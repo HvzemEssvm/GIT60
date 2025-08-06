@@ -6,7 +6,7 @@
 #define MIN_SIZE 3
 #define HT_SIZE 11
 
-typedef struct SimpleDB
+typedef struct
 {
     uint32 Student_ID;
     uint32 Student_year;

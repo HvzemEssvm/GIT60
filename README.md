@@ -50,7 +50,7 @@ To compile and run this project, you will need a C compiler (like GCC).
 2.  **Compile the source files:**
     Open your terminal or command prompt in the project directory and run the following commands:
     ```cli
-    gcc *.c -o main.exe -I.
+    gcc *.c -o main.exe.
     ```
 
 3.  **Run the application:**
