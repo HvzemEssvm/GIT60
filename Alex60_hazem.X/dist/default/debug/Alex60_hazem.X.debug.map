@@ -14,6 +14,94 @@ Discarded input sections
  .text          0x0000000000000000        0x0 build/default/debug/main.o
  .data          0x0000000000000000        0x0 build/default/debug/main.o
  .bss           0x0000000000000000        0x0 build/default/debug/main.o
+ .text          0x0000000000000000        0x0 build/default/debug/DIO.o
+ .data          0x0000000000000000        0x0 build/default/debug/DIO.o
+ .bss           0x0000000000000000        0x0 build/default/debug/DIO.o
+ .text.SET_PINA
+                0x0000000000000000       0x40 build/default/debug/DIO.o
+ .text.SET_PINB
+                0x0000000000000000       0x40 build/default/debug/DIO.o
+ .text.SET_PINC
+                0x0000000000000000       0x40 build/default/debug/DIO.o
+ .text.SET_PIND
+                0x0000000000000000       0x40 build/default/debug/DIO.o
+ .text.SET_PINA_DIR
+                0x0000000000000000       0x40 build/default/debug/DIO.o
+ .text.SET_PINB_DIR
+                0x0000000000000000       0x40 build/default/debug/DIO.o
+ .text.SET_PINC_DIR
+                0x0000000000000000       0x40 build/default/debug/DIO.o
+ .text.SET_PIND_DIR
+                0x0000000000000000       0x40 build/default/debug/DIO.o
+ .text.SET_PORTA
+                0x0000000000000000       0x14 build/default/debug/DIO.o
+ .text.SET_PORTB
+                0x0000000000000000       0x14 build/default/debug/DIO.o
+ .text.SET_PORTC
+                0x0000000000000000       0x14 build/default/debug/DIO.o
+ .text.SET_PORTD
+                0x0000000000000000       0x14 build/default/debug/DIO.o
+ .text.SET_PORTA_DIR
+                0x0000000000000000       0x14 build/default/debug/DIO.o
+ .text.SET_PORTB_DIR
+                0x0000000000000000       0x14 build/default/debug/DIO.o
+ .text.SET_PORTC_DIR
+                0x0000000000000000       0x14 build/default/debug/DIO.o
+ .text.SET_PORTD_DIR
+                0x0000000000000000       0x14 build/default/debug/DIO.o
+ .text.GET_PINA
+                0x0000000000000000       0x16 build/default/debug/DIO.o
+ .text.GET_PINB
+                0x0000000000000000       0x16 build/default/debug/DIO.o
+ .text.GET_PINC
+                0x0000000000000000       0x16 build/default/debug/DIO.o
+ .text.GET_PIND
+                0x0000000000000000       0x16 build/default/debug/DIO.o
+ .text.TOGGLE_PINA
+                0x0000000000000000       0x16 build/default/debug/DIO.o
+ .text.TOGGLE_PINB
+                0x0000000000000000       0x16 build/default/debug/DIO.o
+ .text.TOGGLE_PINC
+                0x0000000000000000       0x16 build/default/debug/DIO.o
+ .text.TOGGLE_PIND
+                0x0000000000000000       0x16 build/default/debug/DIO.o
+ .text.TOGGLE_PORTA
+                0x0000000000000000        0x8 build/default/debug/DIO.o
+ .text.TOGGLE_PORTB
+                0x0000000000000000        0x8 build/default/debug/DIO.o
+ .text.TOGGLE_PORTC
+                0x0000000000000000        0x8 build/default/debug/DIO.o
+ .text.TOGGLE_PORTD
+                0x0000000000000000        0x8 build/default/debug/DIO.o
+ .debug_info    0x0000000000000000      0x800 build/default/debug/DIO.o
+ .debug_abbrev  0x0000000000000000       0xd5 build/default/debug/DIO.o
+ .debug_loc     0x0000000000000000      0x52c build/default/debug/DIO.o
+ .debug_aranges
+                0x0000000000000000       0xf8 build/default/debug/DIO.o
+ .debug_ranges  0x0000000000000000       0xe8 build/default/debug/DIO.o
+ .debug_line    0x0000000000000000      0x3e1 build/default/debug/DIO.o
+ .debug_str     0x0000000000000000        0xe build/default/debug/DIO.o
+ .comment       0x0000000000000000       0x30 build/default/debug/DIO.o
+ .debug_frame   0x0000000000000000      0x1d4 build/default/debug/DIO.o
+ .text          0x0000000000000000        0x0 build/default/debug/LED.o
+ .data          0x0000000000000000        0x0 build/default/debug/LED.o
+ .bss           0x0000000000000000        0x0 build/default/debug/LED.o
+ .text.LED_INIT
+                0x0000000000000000       0x84 build/default/debug/LED.o
+ .text.LED_ON   0x0000000000000000       0x42 build/default/debug/LED.o
+ .text.LED_OFF  0x0000000000000000       0x42 build/default/debug/LED.o
+ .text.LED_TOGGLE
+                0x0000000000000000       0x3a build/default/debug/LED.o
+ .debug_info    0x0000000000000000      0x5a8 build/default/debug/LED.o
+ .debug_abbrev  0x0000000000000000       0xd5 build/default/debug/LED.o
+ .debug_loc     0x0000000000000000      0x3da build/default/debug/LED.o
+ .debug_aranges
+                0x0000000000000000       0x38 build/default/debug/LED.o
+ .debug_ranges  0x0000000000000000       0x28 build/default/debug/LED.o
+ .debug_line    0x0000000000000000      0x182 build/default/debug/LED.o
+ .debug_str     0x0000000000000000       0x88 build/default/debug/LED.o
+ .comment       0x0000000000000000       0x30 build/default/debug/LED.o
+ .debug_frame   0x0000000000000000       0x5c build/default/debug/LED.o
  .text          0x0000000000000000        0x0 c:/program files/microchip/xc8/v2.50/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(exit.o)
  .data          0x0000000000000000        0x0 c:/program files/microchip/xc8/v2.50/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(exit.o)
  .bss           0x0000000000000000        0x0 c:/program files/microchip/xc8/v2.50/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libc.a(exit.o)
@@ -61,6 +149,8 @@ Linker script and memory map
 LOAD C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/ATmega_DFP/3.1.264/xc8/avr/lib/avr5/crtatmega32a.o
                 0x0000000000000001                __MPLAB_BUILD = 0x1
 LOAD build/default/debug/main.o
+LOAD build/default/debug/DIO.o
+LOAD build/default/debug/LED.o
 START GROUP
 LOAD c:/program files/microchip/xc8/v2.50/avr/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a
 END GROUP
