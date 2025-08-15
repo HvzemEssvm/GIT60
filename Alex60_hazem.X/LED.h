@@ -16,9 +16,9 @@ typedef struct
 }LED_t;
 
 void LED_INIT(LED_t* LED,char PORT,uint8_t PIN_NUM);
-void LED_ON(LED_t* LED);
-void LED_OFF(LED_t* LED);
-void LED_TOGGLE(LED_t* LED);
+void LED_ON(const LED_t* LED);
+void LED_OFF(const LED_t* LED);
+void LED_TOGGLE(const LED_t* LED);
 
 #endif	
 
