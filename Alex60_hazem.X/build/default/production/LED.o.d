@@ -1,5 +1,5 @@
-build/default/debug/DIO.o.d build/default/debug/DIO.o: DIO.c DIO.h \
- c:\program\ files\microchip\xc8\v2.50\avr\avr\include\stdio.h \
+build/default/production/LED.o.d build/default/production/LED.o: LED.c \
+ DIO.h c:\program\ files\microchip\xc8\v2.50\avr\avr\include\stdio.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\features.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\bits\alltypes.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\stdlib.h \
@@ -13,7 +13,7 @@ build/default/debug/DIO.o.d build/default/debug/DIO.o: DIO.c DIO.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\portpins.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\common.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\fuse.h \
- c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\lock.h
+ c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\lock.h LED.h
 
 DIO.h:
 
@@ -46,3 +46,5 @@ c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\common.h:
 c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\fuse.h:
 
 c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\lock.h:
+
+LED.h:

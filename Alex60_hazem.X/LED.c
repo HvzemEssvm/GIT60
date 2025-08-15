@@ -9,25 +9,25 @@ void LED_INIT(LED_t* LED,char PORT,uint8_t PIN_NUM)
             LED->PORT = 'A';
             LED->PIN_NUM = PIN_NUM;
             SET_PINA_DIR (PIN_NUM,OUTPUT);
-            SET_PINA (PIN_NUM,LOW);
+            LED_OFF (LED);
             break;
         case 'B':
             LED->PORT = 'B';
             LED->PIN_NUM = PIN_NUM;
             SET_PINB_DIR (PIN_NUM,OUTPUT);
-            SET_PINB (PIN_NUM,LOW);
+            LED_OFF (LED);
             break;
         case 'C':
             LED->PORT = 'C';
             LED->PIN_NUM = PIN_NUM;
             SET_PINC_DIR (PIN_NUM,OUTPUT);
-            SET_PINC (PIN_NUM,LOW);
+            LED_OFF (LED);
             break;
         case 'D':
             LED->PORT = 'D';
             LED->PIN_NUM = PIN_NUM;
             SET_PIND_DIR (PIN_NUM,OUTPUT);
-            SET_PIND (PIN_NUM,LOW);
+            LED_OFF (LED);
             break;
     }
 }

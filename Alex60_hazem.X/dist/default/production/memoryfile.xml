@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?> 
 <project>                                  
-  <executable name="dist/default/debug/Alex60_hazem.X.debug.elf">                 
+  <executable name="dist/default/production/Alex60_hazem.X.production.elf">                 
     <memory name="program">              
       <units>bytes</units>                 
       <length>32768</length>                 
-      <used>170</used>                     
-      <free>32598</free>                     
+      <used>1110</used>                     
+      <free>31658</free>                     
     </memory>                              
     <memory name="data">                 
       <units>bytes</units>                 

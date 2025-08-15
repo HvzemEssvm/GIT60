@@ -40,26 +40,44 @@
  *     and take more RAM usage also to be const to ensure no modifying is occurred on the data.
  * 
  */
-
+#define F_CPU 16000000UL
+#undef __OPTIMIZE__ //SUPERRRRRRRRRRRRRRRRRR IMPORTANTTTTTTTTTTTTTTT!!!!!
 #include <stdio.h>
 #include <stdlib.h>
+#include "LED.h"
+#include "DIO.h"
 #include <avr//io.h>
 #include <util/delay.h>
-#define F_CPU 16000000UL
 
 /*
  * 
  */
+
 int main()
 {
-//    DDRC
-    DDRA |= 1<<2;
+    LED_t LED_1,LED_2,LED_3,LED_4;
+    LED_INIT (&LED_1,'B',3);
+    LED_INIT (&LED_2,'C',2);
+    LED_INIT (&LED_3,'C',7);
+    LED_INIT (&LED_4,'D',6);
+    _delay_ms (10);
+
     while(1)
     {
-        PORTA |= 1<<2;
-        _delay_ms(500); // try implement your own delay function
-        PORTA &= ~(1<<2);
+        LED_ON(&LED_1);
+        _delay_ms (250);
+        LED_OFF(&LED_1);
+        LED_ON(&LED_2);
+        _delay_ms (250);
+        LED_OFF(&LED_2);
+        LED_ON(&LED_3);
+        _delay_ms (250);
+        LED_OFF(&LED_3);
+        LED_ON(&LED_4);
+        _delay_ms (250);
+        LED_OFF(&LED_4);
     }
+    
     return (EXIT_SUCCESS);
 }
 
