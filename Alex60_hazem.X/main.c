@@ -42,40 +42,44 @@
  */
 #define F_CPU 16000000UL
 #undef __OPTIMIZE__ //SUPERRRRRRRRRRRRRRRRRR IMPORTANTTTTTTTTTTTTTTT!!!!!
+#include "DIO.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "LED.h"
-#include "DIO.h"
 #include <avr//io.h>
 #include <util/delay.h>
 
-/*
- * 
- */
+#include "LED.h"
+#include "SEG_7.h"
+
+
+LED_t LEDs[4];
+SEG_t SEG_1;
 
 int main()
 {
-    LED_t LED_1,LED_2,LED_3,LED_4;
-    LED_INIT (&LED_1,'B',3);
-    LED_INIT (&LED_2,'C',2);
-    LED_INIT (&LED_3,'C',7);
-    LED_INIT (&LED_4,'D',6);
+    SEG_INIT (&SEG_1,'A',0,'A',1,'A',2,'A',3,'A',4,'A',5,'A',6,'A',7,FALSE);
+    LED_INIT (LEDs,'B',3);
+    LED_INIT (LEDs+1,'C',2);
+    LED_INIT (LEDs+2,'C',7);
+    LED_INIT (LEDs+3,'D',6);
+    SET_PINB_DIR (2,OUTPUT);
+    SET_PINB(2,HIGH);
+    int i = 15;
     _delay_ms (10);
 
     while(1)
     {
-        LED_ON(&LED_1);
-        _delay_ms (250);
-        LED_OFF(&LED_1);
-        LED_ON(&LED_2);
-        _delay_ms (250);
-        LED_OFF(&LED_2);
-        LED_ON(&LED_3);
-        _delay_ms (250);
-        LED_OFF(&LED_3);
-        LED_ON(&LED_4);
-        _delay_ms (250);
-        LED_OFF(&LED_4);
+      SEG_DISPLAY_HEX (&SEG_1,i,FALSE);
+      if(i<4&&i>=0)
+          LED_ON(&LEDs[i]);
+      _delay_ms(1000);
+      if(i==0)
+      {    
+          i=15;
+          LED_BLINK_ARR(LEDs,4,8,4);
+      }
+      else
+          i--;
     }
     
     return (EXIT_SUCCESS);

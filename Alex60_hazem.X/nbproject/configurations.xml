@@ -6,7 +6,8 @@
                    projectFiles="true">
       <itemPath>DIO.h</itemPath>
       <itemPath>LED.h</itemPath>
-      <itemPath>KEYPAD.h</itemPath>
+      <itemPath>SEG_7.h</itemPath>
+      <itemPath>BUZZER.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -23,7 +24,7 @@
       <itemPath>main.c</itemPath>
       <itemPath>DIO.c</itemPath>
       <itemPath>LED.c</itemPath>
-      <itemPath>KEYPAD.c</itemPath>
+      <itemPath>SEG_7.c</itemPath>
     </logicalFolder>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>

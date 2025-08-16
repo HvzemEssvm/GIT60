@@ -9,20 +9,14 @@
 
 #ifndef DIO_H
 #define	DIO_H
+#define F_CPU 16000000UL
+#undef __OPTIMIZE__
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdint.h>
 #include <avr//io.h>
-
-#define uint8_t unsigned char
-#define int8_t char
-#define uint16_t unsigned short int
-#define int16_t short int 
-#define uint32_t unsigned int 
-#define int32_t int;
 
 typedef enum {INPUT, OUTPUT} dir_t;
 typedef enum {LOW, HIGH} state_t;
-
 
 void SET_PINA(uint8_t PIN_NUM, state_t STATE);
 void SET_PINB(uint8_t PIN_NUM, state_t STATE);

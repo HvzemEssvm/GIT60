@@ -1,4 +1,3 @@
-#include "DIO.h"
 #include "LED.h"
 
 void LED_INIT(LED_t* LED,char PORT,uint8_t PIN_NUM)
@@ -51,6 +50,12 @@ void LED_ON(const LED_t* LED)
     }
 }
 
+void LED_ON_ARR (const LED_t LEDs[], uint8_t size)
+{
+    for(int i=0;i<size;i++)
+        LED_ON(LEDs+i);
+}
+
 void LED_OFF(const LED_t* LED)
 {
     switch(LED->PORT)
@@ -68,6 +73,12 @@ void LED_OFF(const LED_t* LED)
             SET_PIND (LED->PIN_NUM,LOW);
             break;
     }
+}
+
+void LED_OFF_ARR (const LED_t LEDs[], uint8_t size)
+{
+    for(int i=0;i<size;i++)
+        LED_OFF(LEDs+i);
 }
 
 void LED_TOGGLE(const LED_t* LED)
@@ -89,3 +100,34 @@ void LED_TOGGLE(const LED_t* LED)
     }
 }
 
+void LED_TOGGLE_ARR (const LED_t LEDs[], uint8_t size)
+{
+    for(int i=0;i<size;i++)
+        LED_TOGGLE(LEDs+i);
+}
+
+void LED_BLINK(const LED_t* LED,uint8_t FREQ,uint32_t CYCLES)
+{
+    LED_OFF(LED);
+    _delay_ms(5);
+    for(int i=0;i<CYCLES;i++)
+    {
+        LED_ON(LED);
+        _delay_ms((1000/(FREQ*2)));
+        LED_OFF(LED);
+        _delay_ms((1000/(FREQ*2)));
+    }
+}
+
+void LED_BLINK_ARR (const LED_t LEDs[], uint8_t size, uint8_t FREQ, uint32_t CYCLES)
+{
+    LED_OFF_ARR(LEDs,size);
+    _delay_ms(5);
+    for(int i=0;i<CYCLES;i++)
+    {
+        LED_ON_ARR(LEDs,size);
+        _delay_ms((1000/(FREQ*2)));
+        LED_OFF_ARR(LEDs,size);
+        _delay_ms((1000/(FREQ*2)));
+    }
+}
