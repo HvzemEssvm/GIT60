@@ -2,33 +2,24 @@
 
 void LED_INIT(LED_t* LED,char PORT,uint8_t PIN_NUM)
 {
+    LED->PORT = PORT;
+    LED->PIN_NUM = PIN_NUM;
     switch(PORT)
     {
         case 'A':
-            LED->PORT = 'A';
-            LED->PIN_NUM = PIN_NUM;
             SET_PINA_DIR (PIN_NUM,OUTPUT);
-            LED_OFF (LED);
             break;
         case 'B':
-            LED->PORT = 'B';
-            LED->PIN_NUM = PIN_NUM;
             SET_PINB_DIR (PIN_NUM,OUTPUT);
-            LED_OFF (LED);
             break;
         case 'C':
-            LED->PORT = 'C';
-            LED->PIN_NUM = PIN_NUM;
             SET_PINC_DIR (PIN_NUM,OUTPUT);
-            LED_OFF (LED);
             break;
         case 'D':
-            LED->PORT = 'D';
-            LED->PIN_NUM = PIN_NUM;
             SET_PIND_DIR (PIN_NUM,OUTPUT);
-            LED_OFF (LED);
             break;
     }
+    LED_OFF (LED);
 }
 
 void LED_ON(const LED_t* LED)

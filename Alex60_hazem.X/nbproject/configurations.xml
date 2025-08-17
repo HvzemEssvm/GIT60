@@ -25,6 +25,7 @@
       <itemPath>DIO.c</itemPath>
       <itemPath>LED.c</itemPath>
       <itemPath>SEG_7.c</itemPath>
+      <itemPath>BUZZER.c</itemPath>
     </logicalFolder>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>

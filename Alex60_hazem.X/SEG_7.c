@@ -36,7 +36,7 @@ void SEG_INIT(SEG_t* SEG,
     LED_INIT (&(SEG->SEGMENTS[6]),PORT_G,PIN_G);
     LED_INIT (&(SEG->SEGMENTS[7]),PORT_DP,PIN_DP);
     SEG->common_anode = is_common_anode;
-    LED_OFF(SEG);
+    SEG_OFF(SEG);
 }
 
 /**

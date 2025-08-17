@@ -50,10 +50,12 @@
 
 #include "LED.h"
 #include "SEG_7.h"
+#include "BUZZER.h"
 
 
 LED_t LEDs[4];
 SEG_t SEG_1;
+BUZZER_t BUZZ_1;
 
 int main()
 {
@@ -62,8 +64,8 @@ int main()
     LED_INIT (LEDs+1,'C',2);
     LED_INIT (LEDs+2,'C',7);
     LED_INIT (LEDs+3,'D',6);
-    SET_PINB_DIR (2,OUTPUT);
-    SET_PINB(2,HIGH);
+    BUZZER_INIT (&BUZZ_1,'B',0);
+    
     int i = 15;
     _delay_ms (10);
 
@@ -71,12 +73,22 @@ int main()
     {
       SEG_DISPLAY_HEX (&SEG_1,i,FALSE);
       if(i<4&&i>=0)
-          LED_ON(&LEDs[i]);
-      _delay_ms(1000);
+      {
+        BUZZER_ON (&BUZZ_1);
+        _delay_ms(300);
+        LED_ON(&LEDs[i]);
+        BUZZER_OFF (&BUZZ_1);
+        _delay_ms(700);
+      }
+      else 
+          _delay_ms(1000);
       if(i==0)
       {    
           i=15;
+          BUZZER_ON (&BUZZ_1);
           LED_BLINK_ARR(LEDs,4,8,4);
+          _delay_ms(500);
+          BUZZER_OFF (&BUZZ_1);
       }
       else
           i--;
