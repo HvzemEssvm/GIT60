@@ -38,7 +38,7 @@
  * 10) delays should be included in the main file after each init/setup of pins
  * 11) better to use const ptr with structs as arguments to read-only method, not to copy the whole struct in the stack
  *     and take more RAM usage also to be const to ensure no modifying is occurred on the data.
- * 
+ * 12) MCAL libs are named UPPER_CASE conventionally, while HAL libs are named lower_case conventionally
  */
 #define F_CPU 16000000UL
 #undef __OPTIMIZE__ //SUPERRRRRRRRRRRRRRRRRR IMPORTANTTTTTTTTTTTTTTT!!!!!
