@@ -1,6 +1,6 @@
-#include "SEG_7.h"
+#include "seg_7.h"
 
-void SEG_OFF(const SEG_t* SEG)
+void SEG_OFF(const seg_t* SEG)
 {
     switch(SEG->common_anode)
     {
@@ -16,7 +16,7 @@ void SEG_OFF(const SEG_t* SEG)
     }
 }
 
-void SEG_INIT(SEG_t* SEG,
+void SEG_INIT(seg_t* SEG,
               uint8_t PORT_PIN_A,
               uint8_t PORT_PIN_B,
               uint8_t PORT_PIN_C,
@@ -45,7 +45,7 @@ void SEG_INIT(SEG_t* SEG,
  * @param SEG_STATES array of states maps as following [A,B,C,D,E,F,G,DP] where each
  * index holds a value either LOW or HIGH.
  */
-void SEG_DRAW(  const SEG_t* SEG,state_t SEG_STATES[8])
+void SEG_DRAW(  const seg_t* SEG,state_t SEG_STATES[8])
 {
     for(int i=0;i<8;i++)
     {
@@ -56,7 +56,7 @@ void SEG_DRAW(  const SEG_t* SEG,state_t SEG_STATES[8])
     }
 }
 
-void SEG_DISPLAY_HEX(const SEG_t* SEG,uint8_t digit,state_t DP)
+void SEG_DISPLAY_HEX(const seg_t* SEG,uint8_t digit,state_t DP)
 {
     state_t SEG_STATES[8]={LOW}; //[a,b,c,d,e,f,g,DP]
     SEG_STATES[7]=DP;

@@ -1,4 +1,5 @@
-build/default/debug/main.o.d build/default/debug/main.o: main.c DIO.h \
+build/default/production/seg_7.o.d build/default/production/seg_7.o: \
+ seg_7.c seg_7.h led.h DIO.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\stdio.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\features.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\bits\alltypes.h \
@@ -13,13 +14,13 @@ build/default/debug/main.o.d build/default/debug/main.o: main.c DIO.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\common.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\fuse.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\lock.h \
- c:\program\ files\microchip\xc8\v2.50\avr\avr\include\stdlib.h \
- c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\interrupt.h \
- c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\io.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\util\delay.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\util\delay_basic.h \
- c:\program\ files\microchip\xc8\v2.50\avr\avr\include\math.h LED.h \
- SEG_7.h BUZZER.h
+ c:\program\ files\microchip\xc8\v2.50\avr\avr\include\math.h
+
+seg_7.h:
+
+led.h:
 
 DIO.h:
 
@@ -51,20 +52,8 @@ c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\fuse.h:
 
 c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\lock.h:
 
-c:\program\ files\microchip\xc8\v2.50\avr\avr\include\stdlib.h:
-
-c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\interrupt.h:
-
-c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\io.h:
-
 c:\program\ files\microchip\xc8\v2.50\avr\avr\include\util\delay.h:
 
 c:\program\ files\microchip\xc8\v2.50\avr\avr\include\util\delay_basic.h:
 
 c:\program\ files\microchip\xc8\v2.50\avr\avr\include\math.h:
-
-LED.h:
-
-SEG_7.h:
-
-BUZZER.h:

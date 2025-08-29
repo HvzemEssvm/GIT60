@@ -1,4 +1,5 @@
-build/default/debug/LED.o.d build/default/debug/LED.o: LED.c LED.h DIO.h \
+build/default/production/buzzer.o.d build/default/production/buzzer.o: \
+ buzzer.c buzzer.h DIO.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\stdio.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\features.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\bits\alltypes.h \
@@ -17,7 +18,7 @@ build/default/debug/LED.o.d build/default/debug/LED.o: LED.c LED.h DIO.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\util\delay_basic.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\math.h
 
-LED.h:
+buzzer.h:
 
 DIO.h:
 

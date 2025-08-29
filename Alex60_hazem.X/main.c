@@ -49,50 +49,41 @@
 #include <avr//interrupt.h>
 #include <util/delay.h>
 
-#include "LED.h"
-#include "SEG_7.h"
-#include "BUZZER.h"
+#include "seg_7.h"
+#include "keypad_3x3.h"
 
+#define seg_a A0
+#define seg_b A1
+#define seg_c A2
+#define seg_d A3
+#define seg_e A4
+#define seg_f A5
+#define seg_g A6
+#define seg_dp A7
 
-LED_t LEDs[4];
-SEG_t SEG_1;
-BUZZER_t BUZZ_1;
+#define keypad_input_1 C0
+#define keypad_input_2 C1
+#define keypad_input_3 C2
+#define keypad_output_1 C3
+#define keypad_output_2 C4
+#define keypad_output_3 C5
+
+seg_t SEG_1;
+keypad_3x3_t KEYPAD_1;
 
 int main()
 {
     SEG_INIT (&SEG_1,A0,A1,A2,A3,A4,A5,A6,A7,FALSE);
-    LED_INIT (LEDs,B3);
-    LED_INIT (LEDs+1,C2);
-    LED_INIT (LEDs+2,C7);
-    LED_INIT (LEDs+3,D6);
-    BUZZER_INIT (&BUZZ_1,B0);
-    
-    int i = 15;
+    KEYPAD_3X3_INIT(&KEYPAD_1,keypad_input_1,keypad_input_2,keypad_input_3,
+                    keypad_output_1,keypad_output_2,keypad_output_3,FALSE);
     _delay_ms (10);
-
     while(1)
     {
-      SEG_DISPLAY_HEX (&SEG_1,i,FALSE);
-      if(i<4&&i>=0)
-      {
-        BUZZER_ON (&BUZZ_1);
-        _delay_ms(300);
-        LED_ON(&LEDs[i]);
-        BUZZER_OFF (&BUZZ_1);
-        _delay_ms(700);
-      }
-      else 
-          _delay_ms(1000);
-      if(i==0)
-      {    
-          i=15;
-          BUZZER_ON (&BUZZ_1);
-          LED_BLINK_ARR(LEDs,4,8,4);
-          _delay_ms(500);
-          BUZZER_OFF (&BUZZ_1);
-      }
-      else
-          i--;
+        int8_t val = KEYPAD_3X3_READ (&KEYPAD_1);
+        if(val!=-1)
+            SEG_DISPLAY_HEX (&SEG_1,val,FALSE);
+        else
+            SEG_OFF (&SEG_1);
     }
     
     return (EXIT_SUCCESS);

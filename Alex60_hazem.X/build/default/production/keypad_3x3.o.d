@@ -1,5 +1,5 @@
-build/default/debug/SEG_7.o.d build/default/debug/SEG_7.o: SEG_7.c \
- SEG_7.h LED.h DIO.h \
+build/default/production/keypad_3x3.o.d \
+ build/default/production/keypad_3x3.o: keypad_3x3.c keypad_3x3.h DIO.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\stdio.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\features.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\bits\alltypes.h \
@@ -13,14 +13,9 @@ build/default/debug/SEG_7.o.d build/default/debug/SEG_7.o: SEG_7.c \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\portpins.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\common.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\fuse.h \
- c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\lock.h \
- c:\program\ files\microchip\xc8\v2.50\avr\avr\include\util\delay.h \
- c:\program\ files\microchip\xc8\v2.50\avr\avr\include\util\delay_basic.h \
- c:\program\ files\microchip\xc8\v2.50\avr\avr\include\math.h
+ c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\lock.h
 
-SEG_7.h:
-
-LED.h:
+keypad_3x3.h:
 
 DIO.h:
 
@@ -51,9 +46,3 @@ c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\common.h:
 c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\fuse.h:
 
 c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\lock.h:
-
-c:\program\ files\microchip\xc8\v2.50\avr\avr\include\util\delay.h:
-
-c:\program\ files\microchip\xc8\v2.50\avr\avr\include\util\delay_basic.h:
-
-c:\program\ files\microchip\xc8\v2.50\avr\avr\include\math.h:

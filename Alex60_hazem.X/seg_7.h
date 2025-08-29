@@ -16,18 +16,18 @@
 
 #ifndef SEG_7_H
 #define	SEG_7_H
-#include "LED.h"
+#include "led.h"
 #include "DIO.h"
 
 typedef struct
 {
-  LED_t SEGMENTS[8];
+  led_t SEGMENTS[8];
   bool_t common_anode;
-}SEG_t;
+}seg_t;
 
-void SEG_OFF(const SEG_t* SEG);
+void SEG_OFF(const seg_t* SEG);
 
-void SEG_INIT(SEG_t* SEG,
+void SEG_INIT(seg_t* SEG,
               uint8_t PORT_PIN_A,
               uint8_t PORT_PIN_B,
               uint8_t PORT_PIN_C,
@@ -38,9 +38,9 @@ void SEG_INIT(SEG_t* SEG,
               uint8_t PORT_PIN_DP,
               bool_t is_common_anode);
 
-void SEG_DRAW(const SEG_t* SEG,state_t SEG_STATES[8]);
+void SEG_DRAW(const seg_t* SEG,state_t SEG_STATES[8]);
 
-void SEG_DISPLAY_HEX(const SEG_t* SEG,uint8_t digit,state_t DP);
+void SEG_DISPLAY_HEX(const seg_t* SEG,uint8_t digit,state_t DP);
 
 #endif
 

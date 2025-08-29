@@ -83,13 +83,13 @@ int8_t KEYPAD_3X3_READ(const keypad_3x3_t* KEYPAD)
             SET_PIN (KEYPAD->OUTPUT_PORT_PIN[1],(state_t)!(KEYPAD->ACTIVE_HIGH));
             if(is_triggered (KEYPAD->INPUT_PORT_PIN[2],KEYPAD->ACTIVE_HIGH))
             {
-                val = 6;
+                val = 9;
             }
             else
-                val = 5;
+                val = 8;
         }
         else
-            val = 4;
+            val = 7;
     }
     else
         val = -1;
