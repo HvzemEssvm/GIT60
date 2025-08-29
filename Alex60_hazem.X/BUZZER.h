@@ -13,11 +13,10 @@
 
 typedef struct
 {
-  char PORT;
-  uint8_t PIN_NUM;
+  uint8_t PORT_PIN_NUM;
 }BUZZER_t;
 
-void BUZZER_INIT(BUZZER_t* BUZZER,char PORT,uint8_t PIN_NUM);
+void BUZZER_INIT(BUZZER_t* BUZZER,uint8_t PORT_PIN_NUM);
 void BUZZER_ON(const BUZZER_t* BUZZER);
 void BUZZER_OFF(const BUZZER_t* BUZZER);
 void BUZZER_TOGGLE(const BUZZER_t* BUZZER);

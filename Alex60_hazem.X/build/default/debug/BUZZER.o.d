@@ -1,5 +1,5 @@
-build/default/production/SEG_7.o.d build/default/production/SEG_7.o: \
- SEG_7.c SEG_7.h LED.h DIO.h \
+build/default/debug/BUZZER.o.d build/default/debug/BUZZER.o: BUZZER.c \
+ BUZZER.h DIO.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\stdio.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\features.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\bits\alltypes.h \
@@ -18,9 +18,7 @@ build/default/production/SEG_7.o.d build/default/production/SEG_7.o: \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\util\delay_basic.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\math.h
 
-SEG_7.h:
-
-LED.h:
+BUZZER.h:
 
 DIO.h:
 

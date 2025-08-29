@@ -17,24 +17,24 @@ void SEG_OFF(const SEG_t* SEG)
 }
 
 void SEG_INIT(SEG_t* SEG,
-              char PORT_A,uint8_t PIN_A,
-              char PORT_B,uint8_t PIN_B,
-              char PORT_C,uint8_t PIN_C,
-              char PORT_D,uint8_t PIN_D,
-              char PORT_E,uint8_t PIN_E,
-              char PORT_F,uint8_t PIN_F,
-              char PORT_G,uint8_t PIN_G,
-              char PORT_DP,uint8_t PIN_DP,
+              uint8_t PORT_PIN_A,
+              uint8_t PORT_PIN_B,
+              uint8_t PORT_PIN_C,
+              uint8_t PORT_PIN_D,
+              uint8_t PORT_PIN_E,
+              uint8_t PORT_PIN_F,
+              uint8_t PORT_PIN_G,
+              uint8_t PORT_PIN_DP,
               bool_t is_common_anode)
 {
-    LED_INIT (&(SEG->SEGMENTS[0]),PORT_A,PIN_A);
-    LED_INIT (&(SEG->SEGMENTS[1]),PORT_B,PIN_B);
-    LED_INIT (&(SEG->SEGMENTS[2]),PORT_C,PIN_C);
-    LED_INIT (&(SEG->SEGMENTS[3]),PORT_D,PIN_D);
-    LED_INIT (&(SEG->SEGMENTS[4]),PORT_E,PIN_E);
-    LED_INIT (&(SEG->SEGMENTS[5]),PORT_F,PIN_F);
-    LED_INIT (&(SEG->SEGMENTS[6]),PORT_G,PIN_G);
-    LED_INIT (&(SEG->SEGMENTS[7]),PORT_DP,PIN_DP);
+    LED_INIT (&(SEG->SEGMENTS[0]),PORT_PIN_A);
+    LED_INIT (&(SEG->SEGMENTS[1]),PORT_PIN_B);
+    LED_INIT (&(SEG->SEGMENTS[2]),PORT_PIN_C);
+    LED_INIT (&(SEG->SEGMENTS[3]),PORT_PIN_D);
+    LED_INIT (&(SEG->SEGMENTS[4]),PORT_PIN_E);
+    LED_INIT (&(SEG->SEGMENTS[5]),PORT_PIN_F);
+    LED_INIT (&(SEG->SEGMENTS[6]),PORT_PIN_G);
+    LED_INIT (&(SEG->SEGMENTS[7]),PORT_PIN_DP);
     SEG->common_anode = is_common_anode;
     SEG_OFF(SEG);
 }

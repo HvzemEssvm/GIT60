@@ -12,11 +12,10 @@
 
 typedef struct
 {
-  char PORT;
-  uint8_t PIN_NUM;
+  uint8_t PORT_PIN_NUM;
 }LED_t;
 
-void LED_INIT(LED_t* LED,char PORT,uint8_t PIN_NUM);
+void LED_INIT(LED_t* LED,uint8_t PORT_PIN_NUM);
 void LED_ON(const LED_t* LED);
 void LED_ON_ARR(const LED_t LEDs[],uint8_t size);
 void LED_OFF(const LED_t* LED);

@@ -1,5 +1,5 @@
-build/default/production/BUZZER.o.d build/default/production/BUZZER.o: \
- BUZZER.c BUZZER.h DIO.h \
+build/default/debug/keypad_3x3.o.d build/default/debug/keypad_3x3.o: \
+ keypad_3x3.c keypad_3x3.h DIO.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\stdio.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\features.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\bits\alltypes.h \
@@ -13,12 +13,9 @@ build/default/production/BUZZER.o.d build/default/production/BUZZER.o: \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\portpins.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\common.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\fuse.h \
- c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\lock.h \
- c:\program\ files\microchip\xc8\v2.50\avr\avr\include\util\delay.h \
- c:\program\ files\microchip\xc8\v2.50\avr\avr\include\util\delay_basic.h \
- c:\program\ files\microchip\xc8\v2.50\avr\avr\include\math.h
+ c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\lock.h
 
-BUZZER.h:
+keypad_3x3.h:
 
 DIO.h:
 
@@ -49,9 +46,3 @@ c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\common.h:
 c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\fuse.h:
 
 c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\lock.h:
-
-c:\program\ files\microchip\xc8\v2.50\avr\avr\include\util\delay.h:
-
-c:\program\ files\microchip\xc8\v2.50\avr\avr\include\util\delay_basic.h:
-
-c:\program\ files\microchip\xc8\v2.50\avr\avr\include\math.h:

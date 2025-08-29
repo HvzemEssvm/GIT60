@@ -46,6 +46,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <avr//io.h>
+#include <avr//interrupt.h>
 #include <util/delay.h>
 
 #include "LED.h"
@@ -59,12 +60,12 @@ BUZZER_t BUZZ_1;
 
 int main()
 {
-    SEG_INIT (&SEG_1,'A',0,'A',1,'A',2,'A',3,'A',4,'A',5,'A',6,'A',7,FALSE);
-    LED_INIT (LEDs,'B',3);
-    LED_INIT (LEDs+1,'C',2);
-    LED_INIT (LEDs+2,'C',7);
-    LED_INIT (LEDs+3,'D',6);
-    BUZZER_INIT (&BUZZ_1,'B',0);
+    SEG_INIT (&SEG_1,A0,A1,A2,A3,A4,A5,A6,A7,FALSE);
+    LED_INIT (LEDs,B3);
+    LED_INIT (LEDs+1,C2);
+    LED_INIT (LEDs+2,C7);
+    LED_INIT (LEDs+3,D6);
+    BUZZER_INIT (&BUZZ_1,B0);
     
     int i = 15;
     _delay_ms (10);

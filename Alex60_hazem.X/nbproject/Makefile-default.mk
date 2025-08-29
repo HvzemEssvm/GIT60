@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.c DIO.c LED.c SEG_7.c BUZZER.c
+SOURCEFILES_QUOTED_IF_SPACED=main.c DIO.c LED.c SEG_7.c BUZZER.c keypad_3x3.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/DIO.o ${OBJECTDIR}/LED.o ${OBJECTDIR}/SEG_7.o ${OBJECTDIR}/BUZZER.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/DIO.o.d ${OBJECTDIR}/LED.o.d ${OBJECTDIR}/SEG_7.o.d ${OBJECTDIR}/BUZZER.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/DIO.o ${OBJECTDIR}/LED.o ${OBJECTDIR}/SEG_7.o ${OBJECTDIR}/BUZZER.o ${OBJECTDIR}/keypad_3x3.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/DIO.o.d ${OBJECTDIR}/LED.o.d ${OBJECTDIR}/SEG_7.o.d ${OBJECTDIR}/BUZZER.o.d ${OBJECTDIR}/keypad_3x3.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/DIO.o ${OBJECTDIR}/LED.o ${OBJECTDIR}/SEG_7.o ${OBJECTDIR}/BUZZER.o
+OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/DIO.o ${OBJECTDIR}/LED.o ${OBJECTDIR}/SEG_7.o ${OBJECTDIR}/BUZZER.o ${OBJECTDIR}/keypad_3x3.o
 
 # Source Files
-SOURCEFILES=main.c DIO.c LED.c SEG_7.c BUZZER.c
+SOURCEFILES=main.c DIO.c LED.c SEG_7.c BUZZER.c keypad_3x3.c
 
 
 
@@ -118,6 +118,12 @@ ${OBJECTDIR}/BUZZER.o: BUZZER.c  .generated_files/flags/default/ae6c18cc1b0dea19
 	@${RM} ${OBJECTDIR}/BUZZER.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1 -g -DDEBUG  -gdwarf-2  -x c -D__$(MP_PROCESSOR_OPTION)__   -mdfp="${DFP_DIR}/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -fno-common -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3 -mno-const-data-in-progmem     -MD -MP -MF "${OBJECTDIR}/BUZZER.o.d" -MT "${OBJECTDIR}/BUZZER.o.d" -MT ${OBJECTDIR}/BUZZER.o -o ${OBJECTDIR}/BUZZER.o BUZZER.c 
 	
+${OBJECTDIR}/keypad_3x3.o: keypad_3x3.c  .generated_files/flags/default/4b57aeba25486c6dfa8822d8f954389c74cac2bc .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/keypad_3x3.o.d 
+	@${RM} ${OBJECTDIR}/keypad_3x3.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1 -g -DDEBUG  -gdwarf-2  -x c -D__$(MP_PROCESSOR_OPTION)__   -mdfp="${DFP_DIR}/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -fno-common -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3 -mno-const-data-in-progmem     -MD -MP -MF "${OBJECTDIR}/keypad_3x3.o.d" -MT "${OBJECTDIR}/keypad_3x3.o.d" -MT ${OBJECTDIR}/keypad_3x3.o -o ${OBJECTDIR}/keypad_3x3.o keypad_3x3.c 
+	
 else
 ${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/3c5c6bb079beaba274c3f258e1491a8e0c315ac0 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
@@ -148,6 +154,12 @@ ${OBJECTDIR}/BUZZER.o: BUZZER.c  .generated_files/flags/default/70498fbac314ea58
 	@${RM} ${OBJECTDIR}/BUZZER.o.d 
 	@${RM} ${OBJECTDIR}/BUZZER.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -x c -D__$(MP_PROCESSOR_OPTION)__   -mdfp="${DFP_DIR}/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -fno-common -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3 -mno-const-data-in-progmem     -MD -MP -MF "${OBJECTDIR}/BUZZER.o.d" -MT "${OBJECTDIR}/BUZZER.o.d" -MT ${OBJECTDIR}/BUZZER.o -o ${OBJECTDIR}/BUZZER.o BUZZER.c 
+	
+${OBJECTDIR}/keypad_3x3.o: keypad_3x3.c  .generated_files/flags/default/5d6bdd78e3f98195b91b078db2ec5f28c455affb .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/keypad_3x3.o.d 
+	@${RM} ${OBJECTDIR}/keypad_3x3.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -x c -D__$(MP_PROCESSOR_OPTION)__   -mdfp="${DFP_DIR}/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -fno-common -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3 -mno-const-data-in-progmem     -MD -MP -MF "${OBJECTDIR}/keypad_3x3.o.d" -MT "${OBJECTDIR}/keypad_3x3.o.d" -MT ${OBJECTDIR}/keypad_3x3.o -o ${OBJECTDIR}/keypad_3x3.o keypad_3x3.c 
 	
 endif
 
