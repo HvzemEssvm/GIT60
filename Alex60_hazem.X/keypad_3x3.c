@@ -1,3 +1,5 @@
+#include <util/delay.h>
+
 #include "keypad_3x3.h"
 
 void KEYPAD_3X3_INIT(keypad_3x3_t* KEYPAD,
@@ -43,12 +45,15 @@ bool_t is_triggered(uint8_t PORT_PIN_NUM, bool_t is_active_high)
 int8_t KEYPAD_3X3_READ(const keypad_3x3_t* KEYPAD)
 {
     int8_t val;
+    _delay_ms (50);
     if(is_triggered (KEYPAD->INPUT_PORT_PIN[0],KEYPAD->ACTIVE_HIGH))
     {
         SET_PIN (KEYPAD->OUTPUT_PORT_PIN[0],(state_t)!(KEYPAD->ACTIVE_HIGH));
+        _delay_ms (50);
         if(is_triggered (KEYPAD->INPUT_PORT_PIN[0],KEYPAD->ACTIVE_HIGH))
         {   
             SET_PIN (KEYPAD->OUTPUT_PORT_PIN[1],(state_t)!(KEYPAD->ACTIVE_HIGH));
+            _delay_ms (50);
             if(is_triggered (KEYPAD->INPUT_PORT_PIN[0],KEYPAD->ACTIVE_HIGH))
             {
                 val = 3;
@@ -62,9 +67,11 @@ int8_t KEYPAD_3X3_READ(const keypad_3x3_t* KEYPAD)
     else if(is_triggered (KEYPAD->INPUT_PORT_PIN[1],KEYPAD->ACTIVE_HIGH))
     {
         SET_PIN (KEYPAD->OUTPUT_PORT_PIN[0],(state_t)!(KEYPAD->ACTIVE_HIGH));
+        _delay_ms (50);
         if(is_triggered (KEYPAD->INPUT_PORT_PIN[1],KEYPAD->ACTIVE_HIGH))
         {   
             SET_PIN (KEYPAD->OUTPUT_PORT_PIN[1],(state_t)!(KEYPAD->ACTIVE_HIGH));
+            _delay_ms (50);
             if(is_triggered (KEYPAD->INPUT_PORT_PIN[1],KEYPAD->ACTIVE_HIGH))
             {
                 val = 6;
@@ -78,9 +85,11 @@ int8_t KEYPAD_3X3_READ(const keypad_3x3_t* KEYPAD)
     else if(is_triggered (KEYPAD->INPUT_PORT_PIN[2],KEYPAD->ACTIVE_HIGH))
     {
         SET_PIN (KEYPAD->OUTPUT_PORT_PIN[0],(state_t)!(KEYPAD->ACTIVE_HIGH));
+        _delay_ms (50);
         if(is_triggered (KEYPAD->INPUT_PORT_PIN[2],KEYPAD->ACTIVE_HIGH))
         {   
             SET_PIN (KEYPAD->OUTPUT_PORT_PIN[1],(state_t)!(KEYPAD->ACTIVE_HIGH));
+            _delay_ms (50);
             if(is_triggered (KEYPAD->INPUT_PORT_PIN[2],KEYPAD->ACTIVE_HIGH))
             {
                 val = 9;

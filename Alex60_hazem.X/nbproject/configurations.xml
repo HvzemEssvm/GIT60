@@ -9,6 +9,7 @@
       <itemPath>buzzer.h</itemPath>
       <itemPath>led.h</itemPath>
       <itemPath>seg_7.h</itemPath>
+      <itemPath>lcd1602.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -28,6 +29,7 @@
       <itemPath>buzzer.c</itemPath>
       <itemPath>led.c</itemPath>
       <itemPath>seg_7.c</itemPath>
+      <itemPath>lcd1602.c</itemPath>
     </logicalFolder>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
