@@ -44,78 +44,96 @@
 #undef __OPTIMIZE__ //SUPERRRRRRRRRRRRRRRRRR IMPORTANTTTTTTTTTTTTTTT!!!!!
 
 #include "DIO.h"
+#include "INTERRUPT.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <avr//io.h>
-#include <avr//interrupt.h>
 #include <util/delay.h>
 
 #include "seg_7.h"
 #include "keypad_3x3.h"
 #include "lcd1602.h"
+#include "led.h"
 
-#define seg_a A0
-#define seg_b A1
-#define seg_c A2
-#define seg_d A3
-#define seg_e A4
-#define seg_f A5
-#define seg_g A6
-#define seg_dp A7
+led_t led_1;
 
-#define keypad_input_1 C0
-#define keypad_input_2 C1
-#define keypad_input_3 C2
-#define keypad_output_1 C3
-#define keypad_output_2 C4
-#define keypad_output_3 C5
+void handlebtn()
+{
+   LED_TOGGLE (&led_1); 
+}
+
+int main()
+{
+    LED_INIT (&led_1,B1);
+    INTERRUPT_ENABLE (INT0,CHANGE,handlebtn);
+    LED_ON(&led_1);
+    _delay_ms(10);
+    while(1);
+    return (EXIT_SUCCESS);
+}
+
+//#define seg_a A0
+//#define seg_b A1
+//#define seg_c A2
+//#define seg_d A3
+//#define seg_e A4
+//#define seg_f A5
+//#define seg_g A6
+//#define seg_dp A7
+//
+//#define keypad_input_1 C0
+//#define keypad_input_2 C1
+//#define keypad_input_3 C2
+//#define keypad_output_1 C3
+//#define keypad_output_2 C4
+//#define keypad_output_3 C5
 
 //#define LCD_D0 A0
 //#define LCD_D1 A1
 //#define LCD_D2 A2
 //#define LCD_D3 A3
-#define LCD_D4 A4
-#define LCD_D5 A5
-#define LCD_D6 A6
-#define LCD_D7 A7
-#define LCD_RS B1
-#define LCD_E B2
-
-
-keypad_3x3_t KEYPAD_1;
-lcd1602_t LCD_1;
-
-int main()
-{
-    KEYPAD_3X3_INIT(&KEYPAD_1,keypad_input_1,keypad_input_2,keypad_input_3,
-                    keypad_output_1,keypad_output_2,keypad_output_3,FALSE);
-//    LCD1602_INIT (&LCD_1,LCD_D7,LCD_D6,LCD_D5,LCD_D4,LCD_D3,LCD_D2,LCD_D1,LCD_D0,LCD_RS,LCD_E,TRUE,TRUE,TRUE);
-    LCD1602_INIT (&LCD_1,LCD_D7,LCD_D6,LCD_D5,LCD_D4,LCD_RS,LCD_E,TRUE,FALSE,FALSE);
-    _delay_ms (10);
-    
-    LCD1602_STR (&LCD_1,"Hello!");
-    LCD1602_CMD(&LCD_1,CMD_SHIFT_CURSOR_LEFT);
-    LCD1602_CMD(&LCD_1,CMD_SHIFT_CURSOR_LEFT);
-    _delay_ms (10);
-    int i = 0;
-    while(1)
-    {
-        if(i==16)
-        {
-            LCD1602_CMD(&LCD_1,CMD_RETURN_HOME);
-            LCD1602_CMD(&LCD_1,CMD_SHIFT_DISPLAY_LEFT);
-            LCD1602_CMD(&LCD_1,CMD_SHIFT_DISPLAY_LEFT);
-            LCD1602_CMD(&LCD_1,CMD_SHIFT_DISPLAY_LEFT);
-            LCD1602_CMD(&LCD_1,CMD_SHIFT_DISPLAY_LEFT);
-            LCD1602_CMD(&LCD_1,CMD_SHIFT_DISPLAY_LEFT);
-            LCD1602_CMD(&LCD_1,CMD_SHIFT_DISPLAY_LEFT);
-            i=0;
-        }
-        LCD1602_CMD(&LCD_1,CMD_SHIFT_DISPLAY_RIGHT);
-        _delay_ms (250);
-        i++;
-    }
-    
-    return (EXIT_SUCCESS);
-}
+//#define LCD_D4 A4
+//#define LCD_D5 A5
+//#define LCD_D6 A6
+//#define LCD_D7 A7
+//#define LCD_RS B1
+//#define LCD_E B2
+//
+//
+//keypad_3x3_t KEYPAD_1;
+//lcd1602_t LCD_1;
+//
+//int main()
+//{
+//    KEYPAD_3X3_INIT(&KEYPAD_1,keypad_input_1,keypad_input_2,keypad_input_3,
+//                    keypad_output_1,keypad_output_2,keypad_output_3,FALSE);
+////    LCD1602_INIT (&LCD_1,LCD_D7,LCD_D6,LCD_D5,LCD_D4,LCD_D3,LCD_D2,LCD_D1,LCD_D0,LCD_RS,LCD_E,TRUE,TRUE,TRUE);
+//    LCD1602_INIT (&LCD_1,LCD_D7,LCD_D6,LCD_D5,LCD_D4,LCD_RS,LCD_E,TRUE,FALSE,FALSE);
+//    _delay_ms (10);
+//    
+//    LCD1602_STR (&LCD_1,"Hello!");
+//    LCD1602_CMD(&LCD_1,CMD_SHIFT_CURSOR_LEFT);
+//    LCD1602_CMD(&LCD_1,CMD_SHIFT_CURSOR_LEFT);
+//    _delay_ms (10);
+//    int i = 0;
+//    while(1)
+//    {
+//        if(i==16)
+//        {
+//            LCD1602_CMD(&LCD_1,CMD_RETURN_HOME);
+//            LCD1602_CMD(&LCD_1,CMD_SHIFT_DISPLAY_LEFT);
+//            LCD1602_CMD(&LCD_1,CMD_SHIFT_DISPLAY_LEFT);
+//            LCD1602_CMD(&LCD_1,CMD_SHIFT_DISPLAY_LEFT);
+//            LCD1602_CMD(&LCD_1,CMD_SHIFT_DISPLAY_LEFT);
+//            LCD1602_CMD(&LCD_1,CMD_SHIFT_DISPLAY_LEFT);
+//            LCD1602_CMD(&LCD_1,CMD_SHIFT_DISPLAY_LEFT);
+//            i=0;
+//        }
+//        LCD1602_CMD(&LCD_1,CMD_SHIFT_DISPLAY_RIGHT);
+//        _delay_ms (250);
+//        i++;
+//    }
+//    
+//    return (EXIT_SUCCESS);
+//}
 
