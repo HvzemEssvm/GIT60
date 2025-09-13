@@ -1,5 +1,5 @@
-build/default/production/main.o.d build/default/production/main.o: main.c \
- ADC.h DIO.h \
+build/default/production/lm35.o.d build/default/production/lm35.o: lm35.c \
+ lm35.h ADC.h DIO.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\stdio.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\features.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\bits\alltypes.h \
@@ -18,9 +18,9 @@ build/default/production/main.o.d build/default/production/main.o: main.c \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\interrupt.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\util\delay.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\util\delay_basic.h \
- c:\program\ files\microchip\xc8\v2.50\avr\avr\include\math.h lm35.h \
- lcd1602.h c:\program\ files\microchip\xc8\v2.50\avr\avr\include\stdlib.h \
- keypad_3x3.h
+ c:\program\ files\microchip\xc8\v2.50\avr\avr\include\math.h
+
+lm35.h:
 
 ADC.h:
 
@@ -63,11 +63,3 @@ c:\program\ files\microchip\xc8\v2.50\avr\avr\include\util\delay.h:
 c:\program\ files\microchip\xc8\v2.50\avr\avr\include\util\delay_basic.h:
 
 c:\program\ files\microchip\xc8\v2.50\avr\avr\include\math.h:
-
-lm35.h:
-
-lcd1602.h:
-
-c:\program\ files\microchip\xc8\v2.50\avr\avr\include\stdlib.h:
-
-keypad_3x3.h:

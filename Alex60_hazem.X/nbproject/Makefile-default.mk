@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.c DIO.c keypad_3x3.c buzzer.c led.c seg_7.c lcd1602.c INTERRUPT.c
+SOURCEFILES_QUOTED_IF_SPACED=main.c DIO.c keypad_3x3.c buzzer.c led.c seg_7.c lcd1602.c INTERRUPT.c ADC.c lm35.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/DIO.o ${OBJECTDIR}/keypad_3x3.o ${OBJECTDIR}/buzzer.o ${OBJECTDIR}/led.o ${OBJECTDIR}/seg_7.o ${OBJECTDIR}/lcd1602.o ${OBJECTDIR}/INTERRUPT.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/DIO.o.d ${OBJECTDIR}/keypad_3x3.o.d ${OBJECTDIR}/buzzer.o.d ${OBJECTDIR}/led.o.d ${OBJECTDIR}/seg_7.o.d ${OBJECTDIR}/lcd1602.o.d ${OBJECTDIR}/INTERRUPT.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/DIO.o ${OBJECTDIR}/keypad_3x3.o ${OBJECTDIR}/buzzer.o ${OBJECTDIR}/led.o ${OBJECTDIR}/seg_7.o ${OBJECTDIR}/lcd1602.o ${OBJECTDIR}/INTERRUPT.o ${OBJECTDIR}/ADC.o ${OBJECTDIR}/lm35.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/DIO.o.d ${OBJECTDIR}/keypad_3x3.o.d ${OBJECTDIR}/buzzer.o.d ${OBJECTDIR}/led.o.d ${OBJECTDIR}/seg_7.o.d ${OBJECTDIR}/lcd1602.o.d ${OBJECTDIR}/INTERRUPT.o.d ${OBJECTDIR}/ADC.o.d ${OBJECTDIR}/lm35.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/DIO.o ${OBJECTDIR}/keypad_3x3.o ${OBJECTDIR}/buzzer.o ${OBJECTDIR}/led.o ${OBJECTDIR}/seg_7.o ${OBJECTDIR}/lcd1602.o ${OBJECTDIR}/INTERRUPT.o
+OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/DIO.o ${OBJECTDIR}/keypad_3x3.o ${OBJECTDIR}/buzzer.o ${OBJECTDIR}/led.o ${OBJECTDIR}/seg_7.o ${OBJECTDIR}/lcd1602.o ${OBJECTDIR}/INTERRUPT.o ${OBJECTDIR}/ADC.o ${OBJECTDIR}/lm35.o
 
 # Source Files
-SOURCEFILES=main.c DIO.c keypad_3x3.c buzzer.c led.c seg_7.c lcd1602.c INTERRUPT.c
+SOURCEFILES=main.c DIO.c keypad_3x3.c buzzer.c led.c seg_7.c lcd1602.c INTERRUPT.c ADC.c lm35.c
 
 
 
@@ -136,6 +136,18 @@ ${OBJECTDIR}/INTERRUPT.o: INTERRUPT.c  .generated_files/flags/default/1a81282005
 	@${RM} ${OBJECTDIR}/INTERRUPT.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1 -g -DDEBUG  -gdwarf-2  -x c -D__$(MP_PROCESSOR_OPTION)__   -mdfp="${DFP_DIR}/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -fno-common -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3 -mno-const-data-in-progmem     -MD -MP -MF "${OBJECTDIR}/INTERRUPT.o.d" -MT "${OBJECTDIR}/INTERRUPT.o.d" -MT ${OBJECTDIR}/INTERRUPT.o -o ${OBJECTDIR}/INTERRUPT.o INTERRUPT.c 
 	
+${OBJECTDIR}/ADC.o: ADC.c  .generated_files/flags/default/f1874160549dd53f73460d6af3a17eb0343f984c .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/ADC.o.d 
+	@${RM} ${OBJECTDIR}/ADC.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1 -g -DDEBUG  -gdwarf-2  -x c -D__$(MP_PROCESSOR_OPTION)__   -mdfp="${DFP_DIR}/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -fno-common -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3 -mno-const-data-in-progmem     -MD -MP -MF "${OBJECTDIR}/ADC.o.d" -MT "${OBJECTDIR}/ADC.o.d" -MT ${OBJECTDIR}/ADC.o -o ${OBJECTDIR}/ADC.o ADC.c 
+	
+${OBJECTDIR}/lm35.o: lm35.c  .generated_files/flags/default/5f7fa3a748c86e1f4e82a1288e049eaf03ed72fe .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/lm35.o.d 
+	@${RM} ${OBJECTDIR}/lm35.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1 -g -DDEBUG  -gdwarf-2  -x c -D__$(MP_PROCESSOR_OPTION)__   -mdfp="${DFP_DIR}/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -fno-common -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3 -mno-const-data-in-progmem     -MD -MP -MF "${OBJECTDIR}/lm35.o.d" -MT "${OBJECTDIR}/lm35.o.d" -MT ${OBJECTDIR}/lm35.o -o ${OBJECTDIR}/lm35.o lm35.c 
+	
 else
 ${OBJECTDIR}/main.o: main.c  .generated_files/flags/default/3c5c6bb079beaba274c3f258e1491a8e0c315ac0 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
 	@${MKDIR} "${OBJECTDIR}" 
@@ -184,6 +196,18 @@ ${OBJECTDIR}/INTERRUPT.o: INTERRUPT.c  .generated_files/flags/default/6511ab1331
 	@${RM} ${OBJECTDIR}/INTERRUPT.o.d 
 	@${RM} ${OBJECTDIR}/INTERRUPT.o 
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -x c -D__$(MP_PROCESSOR_OPTION)__   -mdfp="${DFP_DIR}/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -fno-common -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3 -mno-const-data-in-progmem     -MD -MP -MF "${OBJECTDIR}/INTERRUPT.o.d" -MT "${OBJECTDIR}/INTERRUPT.o.d" -MT ${OBJECTDIR}/INTERRUPT.o -o ${OBJECTDIR}/INTERRUPT.o INTERRUPT.c 
+	
+${OBJECTDIR}/ADC.o: ADC.c  .generated_files/flags/default/facfdd0a880fda75dc58cd18f7fe5e9f2a9264cf .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/ADC.o.d 
+	@${RM} ${OBJECTDIR}/ADC.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -x c -D__$(MP_PROCESSOR_OPTION)__   -mdfp="${DFP_DIR}/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -fno-common -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3 -mno-const-data-in-progmem     -MD -MP -MF "${OBJECTDIR}/ADC.o.d" -MT "${OBJECTDIR}/ADC.o.d" -MT ${OBJECTDIR}/ADC.o -o ${OBJECTDIR}/ADC.o ADC.c 
+	
+${OBJECTDIR}/lm35.o: lm35.c  .generated_files/flags/default/86600ab62820cb4a30a67cb54a535d4bed111e64 .generated_files/flags/default/da39a3ee5e6b4b0d3255bfef95601890afd80709
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/lm35.o.d 
+	@${RM} ${OBJECTDIR}/lm35.o 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -x c -D__$(MP_PROCESSOR_OPTION)__   -mdfp="${DFP_DIR}/xc8"  -Wl,--gc-sections -O1 -ffunction-sections -fdata-sections -fshort-enums -fno-common -funsigned-char -funsigned-bitfields -Wall -DXPRJ_default=$(CND_CONF)  $(COMPARISON_BUILD)  -gdwarf-3 -mno-const-data-in-progmem     -MD -MP -MF "${OBJECTDIR}/lm35.o.d" -MT "${OBJECTDIR}/lm35.o.d" -MT ${OBJECTDIR}/lm35.o -o ${OBJECTDIR}/lm35.o lm35.c 
 	
 endif
 

@@ -1,6 +1,5 @@
-build/default/production/main.o.d build/default/production/main.o: main.c \
- ADC.h DIO.h \
- c:\program\ files\microchip\xc8\v2.50\avr\avr\include\stdio.h \
+build/default/production/ADC.o.d build/default/production/ADC.o: ADC.c \
+ DIO.h c:\program\ files\microchip\xc8\v2.50\avr\avr\include\stdio.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\features.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\bits\alltypes.h \
  c:\program\ files\microchip\xc8\v2.50\avr\lib\gcc\avr\5.4.0\include\stdint.h \
@@ -13,16 +12,12 @@ build/default/production/main.o.d build/default/production/main.o: main.c \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\portpins.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\common.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\fuse.h \
- c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\lock.h \
+ c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\lock.h ADC.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\io.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\interrupt.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\util\delay.h \
  c:\program\ files\microchip\xc8\v2.50\avr\avr\include\util\delay_basic.h \
- c:\program\ files\microchip\xc8\v2.50\avr\avr\include\math.h lm35.h \
- lcd1602.h c:\program\ files\microchip\xc8\v2.50\avr\avr\include\stdlib.h \
- keypad_3x3.h
-
-ADC.h:
+ c:\program\ files\microchip\xc8\v2.50\avr\avr\include\math.h
 
 DIO.h:
 
@@ -54,6 +49,8 @@ c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\fuse.h:
 
 c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\lock.h:
 
+ADC.h:
+
 c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\io.h:
 
 c:\program\ files\microchip\xc8\v2.50\avr\avr\include\avr\interrupt.h:
@@ -63,11 +60,3 @@ c:\program\ files\microchip\xc8\v2.50\avr\avr\include\util\delay.h:
 c:\program\ files\microchip\xc8\v2.50\avr\avr\include\util\delay_basic.h:
 
 c:\program\ files\microchip\xc8\v2.50\avr\avr\include\math.h:
-
-lm35.h:
-
-lcd1602.h:
-
-c:\program\ files\microchip\xc8\v2.50\avr\avr\include\stdlib.h:
-
-keypad_3x3.h:
